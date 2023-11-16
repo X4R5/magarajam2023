@@ -45,7 +45,7 @@ public class ViewManager : MonoBehaviour
 
     public bool CanAction()
     {
-        if (_firstCamera.GetComponent<CameraSwitch>().IsSwitching() || _secondCamera.GetComponent<CameraSwitch>().IsSwitching())
+        if (_firstCamera.GetComponent<CameraSwitch>().IsSwitching())
             return false;
         else
             return true;

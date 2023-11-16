@@ -7,7 +7,7 @@ public class RobotController : MonoBehaviour
 {
     Rigidbody _rb;
     bool _jump;
-
+    [SerializeField] private float _moveSpeed = 5f;
     [SerializeField] private float _jumpSpeed = 5f;
     private void Awake()
     {
@@ -16,17 +16,20 @@ public class RobotController : MonoBehaviour
     
     void Update()
     {
-        if (!ViewManager.Instance.CanAction()) return;
-
+        var cameraController = Camera.main.GetComponent<CameraController>();
+        if (!cameraController.IsOrthographicView())
+        {
+            return;
+        }
         var horizontal = Input.GetAxis("Horizontal");
 
-        switch(ViewManager.Instance._currentView)
+        switch(cameraController._currentView)
         {
-            case ViewManager.View.FirstView:
-                transform.Translate(horizontal * Time.deltaTime * 5f, 0, 0);
+            case CameraController.View.FirstView:
+                transform.Translate(horizontal * Time.deltaTime * _moveSpeed, 0, 0);
                 break;
-            case ViewManager.View.SecondView:
-                transform.Translate(0, 0, horizontal * Time.deltaTime * 5f);
+            case CameraController.View.SecondView:
+                transform.Translate(0, 0, horizontal * Time.deltaTime * _moveSpeed);
                 break;
         }
 
