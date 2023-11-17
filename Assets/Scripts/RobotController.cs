@@ -54,8 +54,10 @@ public class RobotController : MonoBehaviour
         _jump = false;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
+        if (_canJump) return;
+
         _canJump = true;
     }
     private void OnCollisionExit(Collision collision)
