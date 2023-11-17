@@ -11,7 +11,7 @@ public class OneWayBoxCollider : MonoBehaviour
     private Vector3 _triggerScale = Vector3.one * 1.25f;
     [SerializeField]
     private float _penetrationDepthThreshold = 0.2f;
-    private new BoxCollider _collider = null;
+    private BoxCollider _collider = null;
     private BoxCollider _collisionCheckTrigger = null;
 
     public Vector3 PassthroughDirection => _localDirection ? transform.TransformDirection(_entryDirection.normalized) : _entryDirection.normalized;
