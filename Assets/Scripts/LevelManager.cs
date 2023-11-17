@@ -15,5 +15,6 @@ public class LevelManager : MonoBehaviour
     public void OpenDoor()
     {
         _door.GetComponent<Animator>().SetTrigger("Open");
+        _door.GetComponentInChildren<BoxCollider>().isTrigger = true;
     }
 }

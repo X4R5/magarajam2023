@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovableCube : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Platform"))
         {
