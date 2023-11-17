@@ -7,6 +7,7 @@ public class RobotController : MonoBehaviour
 {
     Rigidbody _rb;
     bool _jump;
+    bool _canJump;
     [SerializeField] private float _moveSpeed = 5f;
     [SerializeField] private float _jumpSpeed = 5f;
     private void Awake()
@@ -33,7 +34,7 @@ public class RobotController : MonoBehaviour
                 break;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && !_jump)
+        if (Input.GetKeyDown(KeyCode.Space) && !_jump && _canJump)
         {
             _jump = true;
         }
@@ -51,5 +52,14 @@ public class RobotController : MonoBehaviour
     {
         _rb.AddForce(Vector3.up * _jumpSpeed, ForceMode.Impulse);
         _jump = false;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        _canJump = true;
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        _canJump = false;
     }
 }

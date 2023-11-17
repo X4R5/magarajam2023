@@ -8,6 +8,7 @@ public class Elevator : MonoBehaviour
     [SerializeField] Transform target;
     bool _move;
     bool _moveBack;
+    bool _isStartedMove;
     Vector3 _startPos = Vector3.zero;
 
     private void Start()
@@ -17,14 +18,15 @@ public class Elevator : MonoBehaviour
 
     void Update()
     {
-        if (_move)
+        if (_move || _isStartedMove)
         {
             if (Vector3.Distance(transform.position, target.position) < 0.1f)
             {
                 _moveBack = true;
+                _isStartedMove = false;
                 return;
             }
-
+            _isStartedMove = true;
             transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         }
 
