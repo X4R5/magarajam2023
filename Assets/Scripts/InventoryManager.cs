@@ -44,6 +44,9 @@ public class InventoryManager : MonoBehaviour
     {
         _inventory.Add(icon);
         _inventorySlots[_inventory.Count - 1].sprite = icon;
+        var color = _inventorySlots[_inventory.Count - 1].color;
+        color.a = 1;
+        _inventorySlots[_inventory.Count - 1].color = color;
     }
 
     internal void SetCurrentItemUseLocation(ItemUseLocation itemUseLocation)
