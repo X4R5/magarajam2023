@@ -4,8 +4,18 @@ using UnityEngine;
 
 public class BGAudioSource : MonoBehaviour
 {
+    public static BGAudioSource Instance;
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(this);
+            return;
+        }
     }
 }
