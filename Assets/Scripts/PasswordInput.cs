@@ -17,7 +17,11 @@ public class PasswordInput : MonoBehaviour
     [SerializeField] string _correctPassword = "1234";
     string _enteredPassword = "";
 
+    AudioClip _correctAudio, _wrongAudio, _typeAudio;
+    AudioSource _audioSource;
     RobotController _robotController;
+
+    bool _completed = false;
 
     private void Awake()
     {
@@ -31,6 +35,7 @@ public class PasswordInput : MonoBehaviour
         }
 
         _robotController = GameObject.FindGameObjectWithTag("Player").GetComponent<RobotController>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -72,6 +77,7 @@ public class PasswordInput : MonoBehaviour
     {
         _enteredPassword += number.ToString();
         UpdatePasswordTextFields();
+        _audioSource.PlayOneShot(_typeAudio);
 
         if (_enteredPassword.Length == _passwordLength)
         {
@@ -85,12 +91,15 @@ public class PasswordInput : MonoBehaviour
         {
             if (_enteredPassword == _correctPassword)
             {
+                _completed = true;
+                _audioSource.PlayOneShot(_correctAudio);
                 Checklist.Instance.AddChecklistObject(gameObject);
                 if(_gameObjectToActivateOnComplete != null) _gameObjectToActivateOnComplete.SetActive(true);
                 DisableCanvas();
                 return;
             }
 
+            _audioSource.PlayOneShot(_wrongAudio);
             _enteredPassword = "";
             UpdatePasswordTextFields();
         }
@@ -119,6 +128,7 @@ public class PasswordInput : MonoBehaviour
 
     public void EnableCanvas()
     {
+        if (_completed) return;
         _canvas.SetActive(true);
         ClearPassword();
         _robotController.DisableMovement();

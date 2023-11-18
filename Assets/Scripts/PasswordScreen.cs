@@ -14,7 +14,6 @@ public class PasswordScreen : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log("E pressed");
             PasswordInput.Instance.EnableCanvas();
         }
     }

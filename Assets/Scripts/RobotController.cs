@@ -11,18 +11,25 @@ public class RobotController : MonoBehaviour
     bool _canMove = true;
     [SerializeField] private float _moveSpeed = 5f;
     [SerializeField] private float _jumpSpeed = 5f;
+    AudioSource _audioSource;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
+        _audioSource = GetComponent<AudioSource>();
     }
     
     void Update()
     {
-        if (!_canMove) return;
+        if (!_canMove)
+        {
+            _audioSource.Stop();
+            return;
+        }
         var cameraController = Camera.main.GetComponent<CameraController>();
         if (!cameraController.IsOrthographicView())
         {
+            _audioSource.Stop();
             return;
         }
         var horizontal = Input.GetAxis("Horizontal");
@@ -37,40 +44,23 @@ public class RobotController : MonoBehaviour
                 break;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && !_jump && _canJump)
+        if(Mathf.Abs(horizontal) > 0.01f)
         {
-            _jump = true;
+            if (!_audioSource.isPlaying)
+            {
+                _audioSource.Play();
+            }
         }
-    }
-
-    private void FixedUpdate()
-    {
-        if (_jump)
+        else
         {
-            Jump();
+            _audioSource.Stop();
         }
-    }
-
-    private void Jump()
-    {
-        _rb.AddForce(Vector3.up * _jumpSpeed, ForceMode.Impulse);
-        _jump = false;
-    }
-
-    private void OnCollisionStay(Collision collision)
-    {
-        if (_canJump) return;
-
-        _canJump = true;
-    }
-    private void OnCollisionExit(Collision collision)
-    {
-        _canJump = false;
     }
 
     internal void DisableMovement()
     {
         _canMove = false;
+        _audioSource.Stop();
     }
 
     internal void EnableMovement()
