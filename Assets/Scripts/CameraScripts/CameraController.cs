@@ -44,11 +44,14 @@ public class CameraController : MonoBehaviour
         if (_camera.orthographic)
         {
             CanRotate(true);
+            InventoryManager.Instance.HideCanvas();
             _firstWall.SetActive(false);
             _secondWall.SetActive(false);
         }
         else if (!_camera.orthographic)
         {
+            InventoryManager.Instance.ShowCanvas();
+
             float yRotation = GetYRotation();
             yRotation = yRotation > 180 ? yRotation - 360 : yRotation;
 
