@@ -8,8 +8,10 @@ public class RobotController : MonoBehaviour
     Rigidbody _rb;
     bool _jump;
     bool _canJump;
+    bool _canMove = true;
     [SerializeField] private float _moveSpeed = 5f;
     [SerializeField] private float _jumpSpeed = 5f;
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
@@ -17,6 +19,7 @@ public class RobotController : MonoBehaviour
     
     void Update()
     {
+        if (!_canMove) return;
         var cameraController = Camera.main.GetComponent<CameraController>();
         if (!cameraController.IsOrthographicView())
         {
@@ -63,5 +66,15 @@ public class RobotController : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
         _canJump = false;
+    }
+
+    internal void DisableMovement()
+    {
+        _canMove = false;
+    }
+
+    internal void EnableMovement()
+    {
+        _canMove = true;
     }
 }
