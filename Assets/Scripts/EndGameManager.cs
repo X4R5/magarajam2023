@@ -52,6 +52,7 @@ public class EndGameManager : MonoBehaviour
 
     public void ShowVideo()
     {
+        BGAudioSource.Instance.gameObject.SetActive(false);
         _videoObject.SetActive(true);
         Invoke("Finish", 2.3f);
         _count = false;

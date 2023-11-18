@@ -10,7 +10,6 @@ public class RobotController : MonoBehaviour
     bool _canJump;
     bool _canMove = true;
     [SerializeField] private float _moveSpeed = 5f;
-    [SerializeField] private float _jumpSpeed = 5f;
     AudioSource _audioSource;
 
     private void Awake()

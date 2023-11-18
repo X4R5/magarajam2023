@@ -11,10 +11,13 @@ public class InventoryManager : MonoBehaviour
     List<Sprite> _inventory = new List<Sprite>();
     [SerializeField] List<Image> _inventorySlots = new List<Image>();
     ItemUseLocation _currentItemUseLocation = null;
+    AudioSource _audioSource;
+    [SerializeField] AudioClip _collectAudio;
 
     private void Awake()
     {
         Instance = this;
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -47,6 +50,7 @@ public class InventoryManager : MonoBehaviour
         var color = _inventorySlots[_inventory.Count - 1].color;
         color.a = 1;
         _inventorySlots[_inventory.Count - 1].color = color;
+        _audioSource.PlayOneShot(_collectAudio);
     }
 
     internal void SetCurrentItemUseLocation(ItemUseLocation itemUseLocation)

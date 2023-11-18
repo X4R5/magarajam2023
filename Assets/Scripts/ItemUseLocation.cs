@@ -9,6 +9,13 @@ public class ItemUseLocation : MonoBehaviour
     bool _canUse = false;
     bool _used = false;
     [SerializeField] GameObject _gameObjectToActivate = null;
+    AudioSource _audioSource;
+    [SerializeField] AudioClip _useAudio, _wrongAudio;
+
+    private void Awake()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
 
     private void OnTriggerStay(Collider other)
     {
@@ -36,16 +43,16 @@ public class ItemUseLocation : MonoBehaviour
 
     internal void UseItem(Sprite sprite)
     {
-        Debug.Log("Using item");
         if (sprite == _expectedIcon)
         {
+            _audioSource.PlayOneShot(_useAudio);
             _gameObjectToActivate.SetActive(true);
             Checklist.Instance.AddChecklistObject(gameObject);
             _used = true;
         }
         else
         {
-            Debug.Log("Wrong item");
+            _audioSource.PlayOneShot(_wrongAudio);
         }
     }
 }
