@@ -25,7 +25,7 @@ public class EndGameManager : MonoBehaviour
             _count = false;
         }
 
-        _counterText.text = "Yokedicinin harekete geçmesine kalan süre: " + Mathf.RoundToInt(_timeToFinish).ToString() + " saniye.";
+        _counterText.text = "Yokedicinin harekete gecmesine kalan sure: " + Mathf.RoundToInt(_timeToFinish).ToString() + " saniye.";
     }
 
     public void ActivateEvetCanvas()
@@ -52,7 +52,9 @@ public class EndGameManager : MonoBehaviour
 
     public void ShowVideo()
     {
-        BGAudioSource.Instance.gameObject.SetActive(false);
+        BGAudioSource.Instance.CanPlay(false);
+        BGAudioSource.Instance.GetComponent<AudioSource>().Stop();
+
         _videoObject.SetActive(true);
         Invoke("Finish", 2.3f);
         _count = false;
@@ -60,6 +62,7 @@ public class EndGameManager : MonoBehaviour
 
     void Finish()
     {
-        Debug.Log("Finish");
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        BGAudioSource.Instance.CanPlay(true);
     }
 }

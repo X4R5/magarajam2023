@@ -15,6 +15,8 @@ public class PerspectiveSwitcher : MonoBehaviour
     private MatrixBlender blender;
     private bool orthoOn;
 
+
+
     [SerializeField] float _switchDuration = 0.6f;
 
     void Start()

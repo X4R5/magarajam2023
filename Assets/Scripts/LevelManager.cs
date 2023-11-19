@@ -16,23 +16,29 @@ public class LevelManager : MonoBehaviour
         Instance = this;
         _crossFadeAnimator = GameObject.Find("CrossFade").GetComponent<Animator>();
     }
-
+    
     private void Update()
     {
         if (_isSceneLoading) return;
 
         if (Input.GetKeyDown(KeyCode.PageUp))
         {
-            if (SceneManager.GetActiveScene().buildIndex == 7) return;
+            if (SceneManager.GetActiveScene().buildIndex == 9) return;
             StartCoroutine(LoadNextScene());
         }
 
         if(Input.GetKeyDown(KeyCode.PageDown))
         {
-            if (SceneManager.GetActiveScene().buildIndex == 1) return;
+            if (SceneManager.GetActiveScene().buildIndex == 2) return;
             StartCoroutine(LoadPreviousScene());
         }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            StartCoroutine(RestartLevel());
+        }
     }
+    
     public void OpenDoor()
     {
         _door.GetComponent<Animator>().SetTrigger("Open");
@@ -55,5 +61,13 @@ public class LevelManager : MonoBehaviour
         _crossFadeAnimator.SetTrigger("End");
         yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    }
+
+    IEnumerator RestartLevel()
+    {
+        _isSceneLoading = true;
+        _crossFadeAnimator.SetTrigger("End");
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

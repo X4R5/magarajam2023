@@ -13,7 +13,7 @@ public class Level1MessageTrigger : MonoBehaviour
         {
             count++;
 
-            if(count == 2)
+            if(count >= 2)
             {
                 _textObjectToShow.SetActive(true);
                 Invoke("DisableTextObject", 5f);
