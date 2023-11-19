@@ -5,14 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class BGAudioSource : MonoBehaviour
 {
-<<<<<<< Updated upstream
-=======
     public static BGAudioSource Instance;
     bool _canPlay = true;
->>>>>>> Stashed changes
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(this);
+            return;
+        }
     }
 
     private void Update()

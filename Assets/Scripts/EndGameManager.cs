@@ -52,11 +52,9 @@ public class EndGameManager : MonoBehaviour
 
     public void ShowVideo()
     {
-<<<<<<< Updated upstream
-=======
         BGAudioSource.Instance.CanPlay(false);
         BGAudioSource.Instance.GetComponent<AudioSource>().Stop();
->>>>>>> Stashed changes
+
         _videoObject.SetActive(true);
         Invoke("Finish", 2.3f);
         _count = false;

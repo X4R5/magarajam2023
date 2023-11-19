@@ -1086,8 +1086,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87d28fb093d1ede45b7f41d82d5d1a41, type: 3}
-<<<<<<< Updated upstream
-=======
 --- !u!1001 &951337030
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1319,7 +1317,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9172a33c6b3492d43b7350cdf2fb4988, type: 3}
->>>>>>> Stashed changes
 --- !u!1001 &1241097413
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1453,8 +1450,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b047efdf52b82b4087d017d50b5be18, type: 3}
-<<<<<<< Updated upstream
-=======
 --- !u!1 &1334714178
 GameObject:
   m_ObjectHideFlags: 0
@@ -1539,7 +1534,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
->>>>>>> Stashed changes
 --- !u!1001 &1822376151
 PrefabInstance:
   m_ObjectHideFlags: 0

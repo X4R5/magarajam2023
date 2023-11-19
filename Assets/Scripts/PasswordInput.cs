@@ -17,7 +17,7 @@ public class PasswordInput : MonoBehaviour
     [SerializeField] string _correctPassword = "1234";
     string _enteredPassword = "";
 
-    AudioClip _correctAudio, _wrongAudio, _typeAudio;
+    [SerializeField] AudioClip _correctAudio, _wrongAudio, _typeAudio;
     AudioSource _audioSource;
     RobotController _robotController;
 
@@ -132,12 +132,14 @@ public class PasswordInput : MonoBehaviour
         _canvas.SetActive(true);
         ClearPassword();
         _robotController.DisableMovement();
+        Camera.main.GetComponent<CameraController>().CanSwitch(false);
     }
 
     public void DisableCanvas()
     {
         _canvas.SetActive(false);
         _robotController.EnableMovement();
+        Camera.main.GetComponent<CameraController>().CanSwitch(true);
     }
 
     public bool IsCanvasEnabled()

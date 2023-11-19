@@ -1,20 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance;
     [SerializeField] GameObject _door;
     [SerializeField] AudioClip _doorOpenSound;
+    [SerializeField] Animator _crossFadeAnimator;
+    bool _isSceneLoading = false;
 
     private void Awake()
     {
         Instance = this;
+        _crossFadeAnimator = GameObject.Find("CrossFade").GetComponent<Animator>();
     }
-
-<<<<<<< Updated upstream
-=======
+    
     private void Update()
     {
         if (_isSceneLoading) return;
@@ -36,15 +38,13 @@ public class LevelManager : MonoBehaviour
             StartCoroutine(RestartLevel());
         }
     }
->>>>>>> Stashed changes
+    
     public void OpenDoor()
     {
         _door.GetComponent<Animator>().SetTrigger("Open");
         _door.GetComponent<BoxCollider>().isTrigger = true;
         _door.GetComponent<AudioSource>().PlayOneShot(_doorOpenSound);
     }
-<<<<<<< Updated upstream
-=======
 
     IEnumerator LoadNextScene()
     {
@@ -70,5 +70,4 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
->>>>>>> Stashed changes
 }
