@@ -190,6 +190,7 @@ MonoBehaviour:
   far: 1000
   orthographicSize: 5
   _switchDuration: 0.6
+  _switchSound: {fileID: 8300000, guid: e4bfcd8f9118790488cadc6403ca119f, type: 3}
 --- !u!114 &1877780485099352253
 MonoBehaviour:
   m_ObjectHideFlags: 0

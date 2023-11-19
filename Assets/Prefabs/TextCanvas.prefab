@@ -85,7 +85,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &2931151034958638072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,8 +171,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Kap\u0131y\u0131 a\xE7mak i\xE7in bataryay\u0131 yerine yerle\u015Ftir"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4d8918874e8759348b782953e6a10fbf, type: 2}
+  m_sharedMaterial: {fileID: -1526813352848771933, guid: 4d8918874e8759348b782953e6a10fbf, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
